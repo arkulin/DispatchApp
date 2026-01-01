@@ -1,0 +1,18 @@
+{
+  "LDZA": {
+    "name": "Zagreb Franjo Tuđman Airport",
+    "curfew": "No curfew",
+    "slot_required": "No",
+    "ppr_required": "Yes",
+    "flight_permit_needed": "No",
+    "notes": "Noise restrictions may apply at night."
+  },
+  "OMDB": {
+    "name": "Dubai International Airport",
+    "curfew": "No curfew",
+    "slot_required": "Yes",
+    "ppr_required": "Yes",
+    "flight_permit_needed": "Yes",
+    "notes": "Overflight and landing permits required for non-scheduled ops."
+  }
+}

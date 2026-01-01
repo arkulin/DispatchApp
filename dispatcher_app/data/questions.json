@@ -1,0 +1,37 @@
+{
+  "Flight planning": [
+    {"question": "What document outlines the planned route, altitude, and fuel for a flight?", "options": ["Pilot logbook", "Flight plan", "Maintenance log", "Manifest"], "answer_index": 1, "explanation": "Flight plan details route, altitude, and fuel."},
+    {"question": "Which tool is commonly used to check enroute weather and NOTAMs?", "options": ["Load sheet", "Dispatch release", "Preflight briefing system", "Crew log"], "answer_index": 2, "explanation": "Briefing systems provide current weather and NOTAMs."},
+    {"question": "When planning fuel, which of the following is NOT typically considered?", "options": ["Contingency fuel", "Alternate fuel", "Taxi fuel", "Cabin cleaning fuel"], "answer_index": 3, "explanation": "Cabin cleaning fuel is not part of flight planning."},
+    {"question": "Who has joint responsibility with the pilot in command for operational control of a flight at most airlines?", "options": ["The ramp agent", "The flight dispatcher", "The cabin crew", "The ground handler"], "answer_index": 1, "explanation": "Dispatchers share operational control with the pilot in command."},
+    {"question": "A flight plan must generally be filed at least how many minutes before departure for IFR operations in controlled airspace?", "options": ["60 minutes", "30 minutes", "5 minutes", "120 minutes"], "answer_index": 1, "explanation": "Typical requirement is 30 minutes before departure."}
+  ],
+  "Flight monitoring": [
+    {"question": "What system provides real-time tracking of an aircraft's position using satellites?", "options": ["ACARS", "VOR", "CPDLC", "ADS-B"], "answer_index": 3, "explanation": "ADS-B transmits aircraft position via satellite or ground stations."},
+    {"question": "During flight monitoring, what should dispatchers do if an enroute weather hazard is reported?", "options": ["Ignore it", "Update the flight crew and consider rerouting", "Contact passengers", "Change crew schedule"], "answer_index": 1, "explanation": "Dispatchers advise the crew and evaluate alternate routing."},
+    {"question": "The primary communication link between dispatch and the airborne crew for text messages is often what?", "options": ["HF radio", "ACARS", "Cell phone", "Morse code"], "answer_index": 1, "explanation": "ACARS is used for routine data messaging."},
+    {"question": "If an aircraft deviates from its planned route due to ATC instructions, dispatchers should...", "options": ["Log the change and assess fuel implications", "Do nothing", "Immediately cancel the flight", "Call the airport fire service"], "answer_index": 0, "explanation": "Route changes must be logged and fuel reviewed."},
+    {"question": "Which document is updated by dispatchers when significant changes occur during flight?", "options": ["Passenger list", "Maintenance record", "Operational flight plan", "Security report"], "answer_index": 2, "explanation": "The operational flight plan is amended as needed."}
+  ],
+  "Mass and balance": [
+    {"question": "Exceeding the forward CG limit can result in what?", "options": ["Reduced stall speed", "Insufficient elevator authority", "Increased cruise speed", "Improved takeoff performance"], "answer_index": 1, "explanation": "Forward CG can limit elevator effectiveness."},
+    {"question": "The moment is calculated by multiplying weight by what?", "options": ["Arm", "Mass", "Lift", "Time"], "answer_index": 0, "explanation": "Moment equals weight times arm."},
+    {"question": "Which item typically has the greatest effect on an aircraft's center of gravity?", "options": ["Passenger seating", "Fuel loading", "Lavatory service", "Paint scheme"], "answer_index": 1, "explanation": "Fuel weight can shift the CG significantly."},
+    {"question": "To compute takeoff weight, you add basic empty weight, payload, and what?", "options": ["Zero fuel weight", "Operating weight", "Takeoff fuel", "Fuel burned"], "answer_index": 2, "explanation": "Takeoff weight includes the fuel for departure."},
+    {"question": "If the aircraft is loaded beyond its aft CG limit, it may become...", "options": ["Nose heavy", "Unstable and hard to recover from stalls", "More fuel efficient", "Easier to land"], "answer_index": 1, "explanation": "Aft CG can make the aircraft unstable."}
+  ],
+  "Aircraft performance": [
+    {"question": "Which factor has the greatest effect on takeoff distance?", "options": ["Gross weight", "Paint color", "Number of passengers", "Time of day"], "answer_index": 0, "explanation": "Higher weight lengthens takeoff distance."},
+    {"question": "The climb gradient is expressed as...", "options": ["Fuel per hour", "Feet per nautical mile", "Minutes per mile", "Pounds per square inch"], "answer_index": 1, "explanation": "Climb gradient uses feet per nautical mile."},
+    {"question": "A wet runway generally ___ the landing distance.", "options": ["Decreases", "Has no effect on", "Increases", "Halves"], "answer_index": 2, "explanation": "Contaminated or wet runways increase landing distance."},
+    {"question": "What chart provides the required runway length for given conditions?", "options": ["Load manifest", "Airport diagram", "Performance takeoff chart", "Winds aloft chart"], "answer_index": 2, "explanation": "Performance charts show takeoff distance requirements."},
+    {"question": "Higher density altitude will usually...", "options": ["Improve climb performance", "Reduce engine and climb performance", "Have no effect", "Allow more payload"], "answer_index": 1, "explanation": "High density altitude reduces performance."}
+  ],
+  "Meteorology": [
+    {"question": "What symbol on a weather chart denotes a cold front?", "options": ["Blue line with triangles", "Red line with semicircles", "Purple line", "Green dashed line"], "answer_index": 0, "explanation": "Cold fronts are shown as blue lines with triangles."},
+    {"question": "Which type of fog typically forms on clear nights with calm winds?", "options": ["Advection fog", "Radiation fog", "Upslope fog", "Steam fog"], "answer_index": 1, "explanation": "Radiation fog forms overnight under calm conditions."},
+    {"question": "SIGMETs advise of...", "options": ["Airport closures", "Significant weather hazards", "Routine forecast updates", "ATC delays"], "answer_index": 1, "explanation": "SIGMETs warn of significant weather that may affect safety."},
+    {"question": "What does METAR stand for?", "options": ["Meteorological Terminal Aviation Routine Weather Report", "Minimum Enroute Temperature and Altitude Report", "Meteorology Automated Relay", "Maximum Temperature Aviation Report"], "answer_index": 0, "explanation": "METAR is a routine aviation weather observation."},
+    {"question": "A TAF typically covers a period of how many hours?", "options": ["6", "12", "24", "48"], "answer_index": 2, "explanation": "TAFs usually forecast weather for a 24-hour period."}
+  ]
+}

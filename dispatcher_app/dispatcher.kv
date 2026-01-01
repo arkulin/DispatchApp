@@ -1,0 +1,138 @@
+#:kivy 2.3.0
+#:import APP_VERSION version.APP_VERSION
+
+<HomeScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+        padding: 40
+        Label:
+            text: 'Dispatcher App'
+            font_size: '24sp'
+        Button:
+            text: 'Quiz'
+            on_press: root.go_quiz()
+        Button:
+            text: 'Airport Info'
+            on_press: root.go_airport()
+        Label:
+            text: 'Version ' + APP_VERSION
+            font_size: '16sp'
+
+<QuizIntroScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+        padding: 20
+        Label:
+            text: root.summary_text
+            halign: 'center'
+        BoxLayout:
+            size_hint_y: None
+            height: '40dp'
+            Label:
+                text: 'Module:'
+            Spinner:
+                id: module_spinner
+                text: root.selected_module
+                values: root.module_names
+                on_text: root.on_module_select(self.text)
+        Label:
+            text: 'Questions in module: ' + str(root.total_questions)
+            halign: 'center'
+        BoxLayout:
+            size_hint_y: None
+            height: '40dp'
+            Label:
+                text: 'Number of questions:'
+            TextInput:
+                id: num_input
+                input_filter: 'int'
+                multiline: False
+        Button:
+            text: 'Start Quiz'
+            size_hint_y: None
+            height: '40dp'
+            on_press: root.start_quiz()
+        Button:
+            text: 'Home'
+            size_hint_y: None
+            height: '40dp'
+            on_press: root.go_home()
+
+<QuizScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 10
+        padding: 20
+        Button:
+            text: 'Home'
+            size_hint_y: None
+            height: '40dp'
+            on_press: root.go_home()
+        Label:
+            id: question_label
+            text: ''
+            font_size: '20sp'
+        BoxLayout:
+            id: options_box
+            orientation: 'vertical'
+        Label:
+            id: quiz_result
+            text: ''
+            size_hint_y: None
+            height: '30dp'
+        BoxLayout:
+            size_hint_y: None
+            height: '40dp'
+            spacing: 10
+            Button:
+                text: 'Check answer'
+                on_press: root.check_answer()
+            Button:
+                id: next_button
+                text: 'Next'
+                on_press: root.next_question()
+
+<AirportScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 10
+        padding: 20
+        Button:
+            text: 'Home'
+            size_hint_y: None
+            height: '40dp'
+            on_press: root.go_home()
+        TextInput:
+            id: input_icao
+            size_hint_y: None
+            height: '40dp'
+            hint_text: 'Enter ICAO (e.g., LDZA)'
+            multiline: False
+        Button:
+            text: 'Search'
+            size_hint_y: None
+            height: '40dp'
+            background_normal: ''
+            background_color: 0, 1, 0, 1
+            on_press: root.search_airport()
+        Label:
+            id: result_label
+            text: 'Airport Info will appear here'
+            halign: 'left'
+
+<QuizResultScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+        padding: 20
+        Label:
+            id: result_label
+            text: ''
+            font_size: '20sp'
+        Button:
+            text: 'Home'
+            size_hint_y: None
+            height: '40dp'
+            on_press: root.go_home()
