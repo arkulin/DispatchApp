@@ -1,303 +1,264 @@
-#:kivy 2.3.0
-
-<HomeScreen>:
-    BoxLayout:
-        orientation: 'vertical'
-        spacing: 20
-        padding: 40
-        canvas.before:
-            Color:
-                rgba: 0.95, 0.95, 0.97, 1
-            Rectangle:
-                pos: self.pos
-                size: self.size
-        
-        Label:
-            text: '✈️ Dispatcher App'
-            font_size: '32sp'
-            bold: True
-            color: 0.2, 0.4, 0.8, 1
-            size_hint_y: 0.3
-        
-        Button:
-            text: 'Start Quiz'
-            font_size: '20sp'
-            bold: True
-            background_normal: ''
-            background_color: 0.2, 0.6, 0.9, 1
-            size_hint_y: 0.2
-            on_press: root.go_quiz()
-        
-        Button:
-            text: 'Airport Info'
-            font_size: '20sp'
-            bold: True
-            background_normal: ''
-            background_color: 0.3, 0.7, 0.4, 1
-            size_hint_y: 0.2
-            on_press: root.go_airport()
+#:kivy 2.0
 
 <QuizIntroScreen>:
     BoxLayout:
         orientation: 'vertical'
-        spacing: 15
         padding: 20
+        spacing: 15
         canvas.before:
             Color:
-                rgba: 0.95, 0.95, 0.97, 1
+                rgba: 0.95, 0.97, 1, 1
             Rectangle:
                 pos: self.pos
                 size: self.size
         
-        Label:
-            text: root.summary_text
-            font_size: '22sp'
-            bold: True
-            color: 0.2, 0.4, 0.8, 1
-            size_hint_y: 0.15
-            text_size: self.width, None
-            halign: 'center'
-        
+        # Header
         BoxLayout:
-            size_hint_y: 0.12
+            size_hint_y: 0.15
+            canvas.before:
+                Color:
+                    rgba: 0.2, 0.4, 0.8, 1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [15]
+            Label:
+                text: '✈️ Flight Dispatcher Quiz'
+                font_size: '24sp'
+                bold: True
+                color: 1, 1, 1, 1
+        
+        # Module selection
+        BoxLayout:
+            size_hint_y: 0.2
+            orientation: 'vertical'
             spacing: 10
             Label:
-                text: 'Module:'
+                text: 'Select Module:'
                 font_size: '18sp'
-                size_hint_x: 0.35
+                bold: True
+                color: 0.2, 0.2, 0.2, 1
+                size_hint_y: 0.3
             Spinner:
                 id: module_spinner
                 text: root.selected_module
                 values: root.module_names
                 font_size: '16sp'
+                size_hint_y: 0.7
                 on_text: root.on_module_select(self.text)
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [10]
         
-        Label:
-            text: 'Questions in module: ' + str(root.total_questions)
-            font_size: '16sp'
-            size_hint_y: 0.08
-            text_size: self.width, None
-            halign: 'center'
-        
+        # Number of questions
         BoxLayout:
-            size_hint_y: 0.12
+            size_hint_y: 0.15
+            orientation: 'vertical'
             spacing: 10
             Label:
-                text: 'Number of questions:'
-                font_size: '18sp'
-                size_hint_x: 0.6
+                text: f'Number of Questions (max {root.total_questions}):'
+                font_size: '16sp'
+                color: 0.2, 0.2, 0.2, 1
+                size_hint_y: 0.4
             TextInput:
                 id: num_input
-                input_filter: 'int'
                 multiline: False
-                font_size: '18sp'
-                size_hint_x: 0.4
+                input_filter: 'int'
+                hint_text: 'Enter number'
+                font_size: '16sp'
+                size_hint_y: 0.6
+                padding: [15, 15]
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [10]
         
         Widget:
             size_hint_y: 0.2
         
-        Button:
-            text: 'Start Quiz'
-            font_size: '20sp'
-            bold: True
-            size_hint_y: 0.12
-            background_normal: ''
-            background_color: 0.2, 0.7, 0.3, 1
-            on_press: root.start_quiz()
-        
-        Button:
-            text: 'Back to Home'
-            font_size: '18sp'
-            size_hint_y: 0.1
-            background_normal: ''
-            background_color: 0.6, 0.6, 0.6, 1
-            on_press: root.go_home()
+        # Buttons
+        BoxLayout:
+            size_hint_y: 0.15
+            spacing: 15
+            Button:
+                text: '← Back'
+                font_size: '16sp'
+                bold: True
+                on_press: root.go_home()
+                canvas.before:
+                    Color:
+                        rgba: 0.6, 0.6, 0.6, 1
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [10]
+            Button:
+                text: 'Start Quiz →'
+                font_size: '16sp'
+                bold: True
+                on_press: root.start_quiz()
+                canvas.before:
+                    Color:
+                        rgba: 0.2, 0.7, 0.3, 1
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [10]
 
 <QuizScreen>:
     BoxLayout:
         orientation: 'vertical'
-        spacing: 15
         padding: 20
+        spacing: 15
         canvas.before:
             Color:
-                rgba: 0.95, 0.95, 0.97, 1
+                rgba: 0.95, 0.97, 1, 1
             Rectangle:
                 pos: self.pos
                 size: self.size
         
-        Label:
-            id: progress_label
-            text: root.progress_text
-            font_size: '16sp'
-            size_hint_y: 0.06
-            color: 0.4, 0.4, 0.4, 1
+        # Progress header
+        BoxLayout:
+            size_hint_y: 0.1
+            canvas.before:
+                Color:
+                    rgba: 0.2, 0.4, 0.8, 1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [15]
+            Label:
+                text: root.progress_text
+                font_size: '18sp'
+                bold: True
+                color: 1, 1, 1, 1
         
+        # Question text
         ScrollView:
-            size_hint_y: 0.25
+            size_hint_y: 0.3
             do_scroll_x: False
-            do_scroll_y: True
-            
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [10]
             Label:
                 id: question_label
                 text: root.question_text
-                font_size: '20sp'
-                bold: True
+                font_size: '18sp'
+                text_size: self.width - 40, None
+                size_hint_y: None
+                height: self.texture_size[1] + 40
+                padding: [20, 20]
                 color: 0.1, 0.1, 0.1, 1
-                size_hint_y: None
-                height: self.texture_size[1] + 20
-                text_size: self.width - 20, None
-                padding: 10, 10
-                halign: 'left'
-                valign: 'top'
+                markup: True
         
-        ScrollView:
-            id: options_scroll
-            size_hint_y: 0.4
-            do_scroll_x: False
-            do_scroll_y: True
-            
-            BoxLayout:
-                id: options_box
-                orientation: 'vertical'
-                spacing: 10
-                size_hint_y: None
-                height: self.minimum_height
-                padding: 5
-        
-        Label:
-            id: feedback_label
-            text: root.feedback_text
-            font_size: '18sp'
-            bold: True
-            size_hint_y: 0.08
-            color: 0.2, 0.6, 0.2, 1
-        
+        # Options
         BoxLayout:
-            size_hint_y: 0.12
+            id: options_box
+            orientation: 'vertical'
+            size_hint_y: 0.45
             spacing: 10
-            Button:
-                text: 'Check Answer'
-                font_size: '18sp'
-                bold: True
-                background_normal: ''
-                background_color: 0.2, 0.6, 0.9, 1
-                on_press: root.check_answer()
-            Button:
-                id: next_button
-                text: 'Next Question'
-                font_size: '18sp'
-                bold: True
-                background_normal: ''
-                background_color: 0.3, 0.7, 0.4, 1
-                on_press: root.next_question()
         
-        Button:
-            text: 'Exit Quiz'
-            font_size: '16sp'
-            size_hint_y: 0.09
-            background_normal: ''
-            background_color: 0.8, 0.3, 0.3, 1
-            on_press: root.go_home()
-
-<AirportScreen>:
-    BoxLayout:
-        orientation: 'vertical'
-        spacing: 15
-        padding: 20
-        canvas.before:
-            Color:
-                rgba: 0.95, 0.95, 0.97, 1
-            Rectangle:
-                pos: self.pos
-                size: self.size
-        
-        Label:
-            text: '🛫 Airport Information'
-            font_size: '24sp'
-            bold: True
-            color: 0.2, 0.4, 0.8, 1
+        # Navigation
+        BoxLayout:
             size_hint_y: 0.1
-        
-        TextInput:
-            id: input_icao
-            size_hint_y: 0.08
-            hint_text: 'Enter ICAO (e.g., LDZA)'
-            font_size: '18sp'
-            multiline: False
-        
-        Button:
-            text: 'Search'
-            font_size: '20sp'
-            bold: True
-            size_hint_y: 0.08
-            background_normal: ''
-            background_color: 0.2, 0.7, 0.3, 1
-            on_press: root.search_airport()
-        
-        ScrollView:
-            size_hint_y: 0.6
-            do_scroll_x: False
-            do_scroll_y: True
-            
-            Label:
-                id: result_label
-                text: 'Airport Info will appear here'
+            spacing: 15
+            Button:
+                text: 'Quit'
                 font_size: '16sp'
-                size_hint_y: None
-                height: self.texture_size[1] + 20
-                text_size: self.width - 20, None
-                padding: 10, 10
-                halign: 'left'
-                valign: 'top'
-        
-        Button:
-            text: 'Back to Home'
-            font_size: '18sp'
-            size_hint_y: 0.08
-            background_normal: ''
-            background_color: 0.6, 0.6, 0.6, 1
-            on_press: root.go_home()
+                bold: True
+                on_press: root.quit_quiz()
+                canvas.before:
+                    Color:
+                        rgba: 0.8, 0.2, 0.2, 1
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [10]
+            Button:
+                text: 'Next →'
+                font_size: '16sp'
+                bold: True
+                on_press: root.next_question()
+                canvas.before:
+                    Color:
+                        rgba: 0.2, 0.7, 0.3, 1
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [10]
 
 <QuizResultScreen>:
     BoxLayout:
         orientation: 'vertical'
+        padding: 20
         spacing: 20
-        padding: 30
         canvas.before:
             Color:
-                rgba: 0.95, 0.95, 0.97, 1
+                rgba: 0.95, 0.97, 1, 1
             Rectangle:
                 pos: self.pos
                 size: self.size
         
-        Label:
-            text: root.title_text
-            font_size: '28sp'
-            bold: True
-            color: 0.2, 0.4, 0.8, 1
+        # Header
+        BoxLayout:
             size_hint_y: 0.15
+            canvas.before:
+                Color:
+                    rgba: 0.2, 0.4, 0.8, 1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [15]
+            Label:
+                text: '📊 Quiz Results'
+                font_size: '24sp'
+                bold: True
+                color: 1, 1, 1, 1
         
+        # Results
         ScrollView:
             size_hint_y: 0.7
             do_scroll_x: False
-            do_scroll_y: True
-            
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [10]
             Label:
                 id: result_label
                 text: root.result_text
-                font_size: '20sp'
-                size_hint_y: None
-                height: self.texture_size[1] + 20
+                font_size: '16sp'
                 text_size: self.width - 40, None
-                padding: 20, 10
-                halign: 'center'
-                valign: 'top'
+                size_hint_y: None
+                height: self.texture_size[1] + 40
+                padding: [20, 20]
+                color: 0.1, 0.1, 0.1, 1
+                markup: True
         
+        # Button
         Button:
             text: 'Back to Home'
-            font_size: '20sp'
+            font_size: '18sp'
             bold: True
-            size_hint_y: 0.12
-            background_normal: ''
-            background_color: 0.2, 0.6, 0.9, 1
+            size_hint_y: 0.1
             on_press: root.go_home()
+            canvas.before:
+                Color:
+                    rgba: 0.2, 0.7, 0.3, 1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [10]
